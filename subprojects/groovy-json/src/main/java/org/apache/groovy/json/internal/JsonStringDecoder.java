@@ -18,6 +18,8 @@
  */
 package org.apache.groovy.json.internal;
 
+import java.io.IOException;
+
 public class JsonStringDecoder {
 
     public static String decode(char[] chars, int start, int to) {
