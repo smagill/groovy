@@ -32,5 +32,6 @@ public class JsonStringDecoder {
             builder.decodeJsonString(chars, start, to);
             return builder.toString();    
         }
+        catch(IOException e) { return null; }
     }
 }
