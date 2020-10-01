@@ -77,6 +77,9 @@ public class MethodCallExpression extends Expression implements MethodCall {
     }
 
     public Expression transformExpression(ExpressionTransformer transformer) {
+        if(transformer == null)
+            return null;
+
         MethodCallExpression answer =
             new MethodCallExpression(transformer.transform(objectExpression), transformer.transform(method), transformer.transform(arguments));
         answer.setSafe(safe);
