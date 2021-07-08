@@ -77,6 +77,9 @@ public class MethodCallExpression extends Expression implements MethodCall {
     }
 
     public Expression transformExpression(ExpressionTransformer transformer) {
+        if(transformer == null)
+            return null;
+
         MethodCallExpression answer =
             new MethodCallExpression(transformer.transform(objectExpression), transformer.transform(method), transformer.transform(arguments));
         answer.setSafe(safe);
@@ -96,7 +99,8 @@ public class MethodCallExpression extends Expression implements MethodCall {
     public void setArguments(Expression arguments) {
         if (!(arguments instanceof TupleExpression)) {
             this.arguments = new TupleExpression(arguments);
-            this.arguments.setSourcePosition(arguments);
+            if(arguments != null)
+                this.arguments.setSourcePosition(arguments);
         } else {
             this.arguments = arguments;
         }
